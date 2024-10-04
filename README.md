@@ -67,23 +67,29 @@ The **Facade Pattern** is key here, simplifying communication between the layers
 
 ---
 
-### Task 1: Detailed Class Diagram for Business Logic Layer
+## Task 1: Detailed Class Diagram for Business Logic Layer
 
-This diagram represents the key entities and relationships within the Business Logic Layer of the HBnB application, focusing on:
+In this task, we created a detailed class diagram representing the key entities and relationships within the Business Logic layer of the HBnB application. The diagram focuses on the following core entities: **BaseModel**, **User**, **Place**, **Review**, and **Amenity**. Each entity is designed with specific attributes and methods to support the application's functionality.
 
-- **User**: Represents individuals using the platform. Users can create places and write reviews. Attributes include a unique identifier (UUID), name, email, and timestamps for creation and updates.
+### Key Entities:
+- **BaseModel**: A superclass that provides common attributes for all entities in the system. These include a unique identifier (UUID), as well as timestamps for creation (`created_at`) and updates (`updated_at`). It also defines common methods like `save()` and `delete()` for handling database operations.
 
-- **Place**: Represents properties listed on the platform. A place can have multiple reviews and amenities. Attributes include the name, location, capacity, and timestamps for creation and updates. The entity also includes methods for adding amenities and retrieving reviews.
+- **User**: Represents the individuals using the platform. Each user can create places and write reviews. Attributes include a name, email, and inheritance of the common attributes from **BaseModel**.
 
-- **Review**: Represents user feedback on specific places. Reviews include a rating, comment, and timestamps. A user can write multiple reviews for different places.
+- **Place**: Represents properties listed on the platform. A place can have multiple reviews and amenities. Attributes include the name, location, and capacity, along with inherited attributes from **BaseModel**. The entity also contains methods for adding amenities and retrieving reviews.
 
-- **Amenity**: Represents features offered by a place (e.g., WiFi, pool). This entity is associated with places through a composition relationship.
+- **Review**: Represents feedback left by users on specific places. Each review includes a rating and text, as well as timestamps inherited from **BaseModel**. A user can write multiple reviews for different places.
 
-#### Relationships:
+- **Amenity**: Represents the features offered by a place, such as WiFi or a pool. This entity is associated with places through a composition relationship and inherits common attributes from **BaseModel**.
+
+### Relationships:
+- **BaseModel**: Serves as the foundation for all entities, providing essential attributes like UUIDs and timestamps.
 - **User to Place**: A user can create multiple places (one-to-many association).
 - **User to Review**: A user can write multiple reviews (one-to-many association).
 - **Place to Review**: A place can have multiple reviews (one-to-many association).
 - **Place to Amenity**: A place can have multiple amenities (composition relationship), meaning amenities are tightly coupled to places and do not exist independently.
+
+This diagram is essential for understanding the architecture of the business logic layer and the interactions between these core entities.
 
 ![HBNB UML Task 1](UML/Task1.png)
 
